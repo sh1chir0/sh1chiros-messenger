@@ -34,8 +34,9 @@
     </div>
 
     <div class="new-contact">
-      <form>
-        <input type="text" name="new-contact">
+      <form method="post" action="/contact">
+        <input type="text" name="nickname">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
         <button type="submit">
           <i class="fa-solid fa-plus"></i>
         </button>

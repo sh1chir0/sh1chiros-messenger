@@ -49,8 +49,11 @@ public class UserService {
             updateUser(user);
         }
     }
+    public User getUserByEmail(String email){
+        return userRepository.findByEmail(email);
+    }
     public boolean createUser(User user){
-        if(userRepository.findByEmail(user.getEmail()) != null) return false;
+        if(userRepository.findByEmail(user.getEmail()) != null && userRepository.findByNickname(user.getNickname()) != null) return false;
         user.setActive(true);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setImageId(3L);

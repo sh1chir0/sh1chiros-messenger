@@ -129,29 +129,3 @@ public class User implements UserDetails {
 
 
 
-@Entity
-@Data
-@Table(name="contacts")
-@AllArgsConstructor
-@NoArgsConstructor
-class Contact {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private Long id;
-
-    @ManyToOne
-    private User user;
-    @ManyToOne
-    private User contact;
-
-    @Column(name = "chat_id")
-    private Long chatId;
-
-    public Contact(User user, User contact, Long chatId) {
-        this.user = user;
-        this.contact = contact;
-        this.chatId = chatId;
-    }
-}

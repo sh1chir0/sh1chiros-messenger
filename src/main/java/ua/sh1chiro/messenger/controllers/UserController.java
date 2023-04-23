@@ -36,10 +36,8 @@ public class UserController {
     public String createUser(User user, Model model){
         if(userService.createUser(user)){
             return ("redirect:/login");
-        }
-        else{
-            model.addAttribute("errorMessage", "Користувач з email: " + user.getEmail() + " вже існує.");
-            return "registration";
+        }else{
+            return ("redirect:/registration");
         }
     }
 
@@ -53,6 +51,12 @@ public class UserController {
     @PostMapping("/settings")
     public String updateUser(@RequestParam("file1") MultipartFile file1, User user, Principal principal) throws IOException {
         User userBeforeUpdate = userService.getUserByPrincipal(principal);
+        if(!user.getNickname().equals(userBeforeUpdate.getNickname()) && userService.getUserByNickname(user.getNickname()) != null){
+            return ("redirect:/settings");
+        }
+        if(!user.getEmail().equals(userBeforeUpdate.getEmail()) && userService.getUserByEmail(user.getEmail()) != null){
+            return ("redirect:/settings");
+        }
         user.setId(userBeforeUpdate.getId());
         user.setPassword(userBeforeUpdate.getPassword());
         user.setActive(userBeforeUpdate.isActive());
@@ -67,6 +71,10 @@ public class UserController {
                 imageService.remove(userBeforeUpdate.getImageId());
                 imageService.add(file1, userService.getUserByPrincipal(principal).getId());
             }
+        }
+
+        if(!user.getEmail().equals(userBeforeUpdate.getEmail())){
+            return ("redirect:/login");
         }
         return ("redirect:/settings");
     }
