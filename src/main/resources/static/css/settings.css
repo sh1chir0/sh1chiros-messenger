@@ -1,0 +1,274 @@
+body {
+    margin: 0;
+    height: 100vh;
+}
+
+/* skeleton */
+.screen{
+    max-height: 100%;
+    display: flex;
+    min-height: 100%;
+
+}
+.contacts{
+    background: #505052;
+    width: 300px;
+    padding: 20px;
+}
+.settings{
+    background: #fff;
+    width: 1200px;
+}
+/* skeleton */
+
+.round{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%; /* Радиус скругления */
+    box-shadow: 0 0 3px #666;
+    margin-right: 10px;
+}
+.online .fa-circle{
+    color: #70CC16;
+    font-size: 9px;
+}
+.offline .fa-circle{
+    color: #ff0000;
+    font-size: 9px;
+}
+
+
+/* contacts */
+.contacts{
+    overflow: auto;
+}
+.contacts::-webkit-scrollbar {
+    width: 7px;
+}
+.contacts::-webkit-scrollbar-thumb {
+    background: #cccccc;
+    border-radius: 7px;
+}
+
+
+.contact{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-bottom: 10px;
+}
+.contact-name{
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #FFF;
+    margin-right: 10px;
+}
+.contact-name p{
+    margin: 0;
+}
+.contact-name a{
+    text-decoration: none;
+    color: #FFF;
+}
+.my-account{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: solid 1px #dbd0de;
+    padding-bottom: 10px;
+}
+
+.my-avatar .round{
+    width: 50px;
+    height: 50px;
+}
+.my-name{
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    color: #FFF;
+    margin-right: 10px;
+}
+.my-name p{
+    margin:0;
+}
+.my-name a{
+     text-decoration: none;
+     color: #FFF;
+ }
+.my-settings a{
+    color: #FFF;
+}
+
+.new-contact form{
+    display: flex;
+    align-items: center;
+}
+.new-contact input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    min-width: 80%;
+    padding: 5px;
+    border:none;
+    border-radius: 5px;
+    background-color: #828286;
+    color: #FFF;
+    outline: none;
+    transition: all 0.5s;
+}
+.new-contact input:hover{
+    background-color: #fff;
+    color: #000000;
+}
+.new-contact button{
+    margin-left: auto;
+    margin-right: auto;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    font-size: 15px;
+    background-color: #828286;
+    color: #fff;
+    transition: all 0.5s;
+}
+.new-contact button:hover{
+    background-color: #fff;
+    color: #000000;
+    animation-name: spin;
+    animation-duration: 500ms;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.chats{
+    border-bottom:solid 1px #dbd0de;
+}
+
+/* contacts */
+
+
+
+/* settings */
+.settings{
+    overflow: auto;
+}
+.settings::-webkit-scrollbar {
+    width: 7px;
+}
+.settings::-webkit-scrollbar-thumb {
+    background: #cccccc;
+    border-radius: 7px;
+}
+
+
+.header-settings{
+    background-color: #baa4ff;
+    font-family: 'Nunito', sans-serif;
+    padding-left: 20px;
+    align-items: center;
+    display: flex;
+    height: 50px;
+    font-size: 24px;
+    font-weight: 500;
+    color: #fff;
+}
+.header-settings p{
+    margin: 0;
+
+}
+
+
+
+.registration-block{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+.registration-form{
+    padding: 20px 50px 50px 50px;
+    background-color: #fff;
+    border-radius: 7px;
+    border: solid 1px #c2c2c2;
+}
+.form-name{
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.bl{
+    position: relative;
+    display: block;
+    margin-bottom: 30px;
+
+}
+.registration-form input, select {
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    background: #fff;
+    padding: 10px;
+    width: 100%;
+    border-radius: 7px;
+    box-shadow: none;
+    appearance: none;
+    border: 2px solid #ccc;
+}
+.registration-form select {
+    border: 1px solid #ccc; /* Додаємо рамку, щоб відповідати input */
+    cursor: pointer; /* Міняємо курсор на показовий, щоб вказати, що select можна вибирати */
+    border: 2px solid #ccc;
+}
+.registration-form label {
+    position: absolute;
+    top: -22px;
+    left: 10px;
+}
+
+.submit-button button{
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    border:none;
+    border-radius: 7px;
+    padding: 5px;
+    width: 100%;
+    background-color: #c9c9c9;
+    transition: background-color 0.5s;
+}
+.submit-button button:hover{
+    background-color: #979797;
+}
+.logout-button{
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    border:none;
+    border-radius: 7px;
+    padding: 5px;
+    width: 100%;
+    color: #ffffff;
+    background-color: #da0000;
+    transition: background-color 0.5s;
+}
+.logout-button:hover{
+    background-color: #b00000;
+}
+.mrg{
+    margin-bottom: 20px;
+}
+/* settings */

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel='stylesheet' th:href='@{/css/chatWithInterlocutor.css}'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/ebe2b16cd6.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Roboto:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <title>Messenger</title>
+</head>
+<body>
+<div class="screen">
+  <div class="contacts">
+    <div class="my-account">
+      <div class="my-avatar">
+        <img th:src="@{/images/{id}(id = ${me.getImageId()})}" alt="" class="round">
+      </div>
+      <div class="my-name">
+        <a href="/"><p th:text="${me.getNickname()}">Sophia Williams</p></a>
+      </div>
+      <div class="my-settings">
+        <a href="/settings"><i class="fa-solid fa-gear"></i></a>
+      </div>
+    </div>
+
+    <div class="new-contact">
+      <form method="post" action="/contact">
+        <input type="text" name="nickname">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <button type="submit">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </form>
+    </div>
+
+    <div class="chats">
+
+      <div th:each="contact : ${contacts}" class="contact">
+        <div class="contact-avatar">
+          <img th:src="@{/images/{id}(id = ${contact.getContact().getImageId()})}" alt="" class="round">
+        </div>
+        <div class="contact-name">
+          <a th:href="@{/chat/{id}(id = ${contact.getChatId()})}"><p th:text="${contact.getContact().getNickname()}"></p></a>
+        </div>
+        <div class="interlocutor-status online">
+          <i class="fa-solid fa-circle fa-2xs"></i>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+  <div class="chat">
+    <div class="chat-header">
+      <div class="chat-name">
+        <p>BFFs 4EVA</p>
+      </div>
+      <div class="search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+    </div>
+    <div id="current-user" th:attr="data-user-nickname=${me.getNickname()}"></div>
+    <div id="current-chat-id" th:attr="data-chat-id=${chat.getId()}"></div>
+    <div id="current-link-img" th:attr="data-link-img=${interlocutor.getImageId()}"></div>
+    <div class="chat-body">
+      <div class="core" id="core">
+        <div th:each="message : ${history}"
+             th:class="${message.getUser().getId() == me.getId()} ? 'my-message' : 'interlocutor-message'">
+          <div th:if="${message.getUser().getId() != me.getId()}" class="mess-img">
+            <img th:src="@{/images/{id}(id=${interlocutor.getImageId()})}" class="round">
+          </div>
+          <div class="mess">
+            <p th:text="${message.getMessage()}"></p>
+            <small th:text="${#temporals.format(message.getDateOfCreated(), 'HH:mm')}"></small>
+          </div>
+        </div>
+<!--        <div class="interlocutor-message">-->
+<!--          <div class="mess-img">-->
+<!--            <img th:src="@{/img/inbar.jpg}" class="round">-->
+<!--          </div>-->
+<!--          <div class="mess">-->
+<!--            <p>Hey, is anyone online right now?</p>-->
+<!--            <small>10:53 PM</small>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        <div class="my-message">-->
+<!--          <div class="a">-->
+<!--          </div>-->
+<!--          <div class="mess">-->
+<!--            <p>Not much, just wanted to chat for a bit. How's your day going?</p>-->
+<!--            <small>11:49 PM</small>-->
+<!--          </div>-->
+<!--        </div>-->
+
+
+      </div>
+    </div>
+
+    <div class="chat-area">
+      <form id="messageForm">
+        <div class="text-place">
+          <textarea id="message" placeholder="Написати повідомлення..."></textarea>
+        </div>
+        <div class="send-button">
+          <button type="submit">
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+
+
+
+  <div class="interlocutor">
+    <div class="interlocutor-photo">
+      <img th:src="@{/images/{id}(id=${interlocutor.getImageId()})}" alt="placeholder+image">
+    </div>
+    <div class="interlocutor-info">
+      <div class="interlocutor-head">
+        <div class="interlocutor-name">
+          <p th:text="${interlocutor.getName()}">Amilia Luna</p>
+        </div>
+        <div class="interlocutor-status online">
+          <i class="fa-solid fa-circle fa-2xs"></i>
+        </div>
+        <!-- <div class="interlocutor-status offline">
+            <i class="fa-solid fa-circle fa-2xs"></i>
+        </div> -->
+      </div>
+
+      <div class="text-status">
+        <p th:text="${interlocutor.getStatus()}">UI Designer</p>
+        <hr>
+      </div>
+
+      <div class="links">
+        <div class="link facebook">
+          <a th:href="${interlocutor.getFacebook()}">
+          <i class="fa-brands fa-facebook"></i>
+          </a>
+        </div>
+        <div class="link twitter">
+          <a th:href="${interlocutor.getTwitter()}">
+          <i class="fa-brands fa-twitter"></i>
+          </a>
+        </div>
+        <div class="link instagram">
+          <a th:href="${interlocutor.getInstagram()}">
+          <i class="fa-brands fa-instagram"></i>
+          </a>
+        </div>
+        <div class="link linkedin">
+          <a th:href="${interlocutor.getLinkedin()}">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="block-button">
+        <button href="#">Заблокувати</button>
+      </div>
+      <!-- <div class="block-button">
+          <button href="#">Розблокувати</button>
+      </div> -->
+
+      <div class="another-info">
+        <div class="username-block">
+          <div class="element-name">
+            <p>Username</p>
+          </div>
+          <div class="element-text">
+            <p th:text="${interlocutor.getNickname()}">Am1</p>
+          </div>
+        </div>
+
+        <div class="number-block">
+          <div class="element-name">
+            <p>Number</p>
+          </div>
+          <div class="element-text">
+            <p th:text="${interlocutor.getPhoneNumber()}">+380636699669</p>
+          </div>
+        </div>
+
+        <div class="email-block">
+          <div class="element-name">
+            <p>Email</p>
+          </div>
+          <div class="element-text">
+            <p th:text="${interlocutor.getEmail()}">am1.l@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="skype-block">
+          <div class="element-name">
+            <p>Discord</p>
+          </div>
+          <div class="element-text">
+            <p th:text="${interlocutor.getDiscord()}">Am1#6696</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+</div>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script th:src="@{/js/scroll.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>

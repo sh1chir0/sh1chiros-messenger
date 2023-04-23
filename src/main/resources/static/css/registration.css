@@ -1,0 +1,80 @@
+body{
+    margin: 0;
+    background-color: #505052;
+    font-family: 'Nunito', sans-serif;
+}
+p{
+    margin: 0;
+}
+.registration-block{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+}
+.registration-form{
+    padding: 20px 50px 50px 50px;
+    background-color: #fff;
+    border-radius: 7px;
+    align-self: center;
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+}
+.form-name{
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.bl{
+    position: relative;
+    display: block;
+    margin-bottom: 30px;
+
+}
+input, select {
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    background: #fff;
+    padding: 10px;
+    width: 90%;
+    border-radius: 7px;
+    box-shadow: none;
+    appearance: none;
+    border: 2px solid #ccc;
+}
+select {
+    height: 40px;
+    border: 1px solid #ccc; /* Додаємо рамку, щоб відповідати input */
+    cursor: pointer; /* Міняємо курсор на показовий, щоб вказати, що select можна вибирати */
+    border: 2px solid #ccc;
+    width: calc(100% - 17px);
+}
+label {
+    position: absolute;
+    top: -22px;
+    left: 10px;
+}
+
+.submit-button button{
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    border:none;
+    border-radius: 7px;
+    padding: 5px;
+    width: 100%;
+    background-color: #c9c9c9;
+    transition: background-color 0.5s;
+}
+.submit-button button:hover{
+    background-color: #979797;
+}
+
+.login-link{
+    margin-top: 20px;
+}
+.login-link a{
+    text-align: center;
+    text-decoration: none;
+}

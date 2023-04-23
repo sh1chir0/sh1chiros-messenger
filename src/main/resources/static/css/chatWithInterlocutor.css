@@ -1,0 +1,441 @@
+body {
+    margin: 0;
+    height: 100vh;
+}
+
+/* skeleton */
+.screen{
+    max-height: 100%;
+    display: flex;
+    min-height: 100%;
+
+}
+.contacts{
+    background: #505052;
+    width: 300px;
+    padding: 20px;
+}
+.chat{
+    background: #fff;
+    width: 950px;
+}
+.interlocutor{
+    background: #e8ebee;
+    width: 250px;
+}
+/* skeleton */
+
+
+
+
+/* contacts */
+.contacts{
+    overflow: auto;
+}
+.contacts::-webkit-scrollbar {
+    width: 7px;
+}
+.contacts::-webkit-scrollbar-thumb {
+    background: #cccccc;
+    border-radius: 7px;
+}
+
+
+.contact{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-bottom: 10px;
+}
+.contact-name{
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #FFF;
+    margin-right: 10px;
+}
+.contact-name p{
+    margin: 0;
+}
+.contact-name a{
+    text-decoration: none;
+    color: #FFF;
+}
+.my-account{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: solid 1px #dbd0de;
+    padding-bottom: 10px;
+}
+
+.my-avatar .round{
+    width: 50px;
+    height: 50px;
+}
+.my-name{
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    color: #FFF;
+    margin-right: 10px;
+}
+.my-name p{
+    margin:0;
+}
+.my-name a{
+    text-decoration: none;
+    color: #FFF;
+}
+.my-settings a{
+    color: #FFF;
+}
+
+.new-contact form{
+    display: flex;
+    align-items: center;
+}
+.new-contact input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    min-width: 80%;
+    padding: 5px;
+    border:none;
+    border-radius: 5px;
+    background-color: #828286;
+    color: #FFF;
+    outline: none;
+    transition: all 0.5s;
+}
+.new-contact input:hover{
+    background-color: #fff;
+    color: #000000;
+}
+.new-contact button{
+    margin-left: auto;
+    margin-right: auto;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    font-size: 15px;
+    background-color: #828286;
+    color: #fff;
+    transition: all 0.5s;
+}
+.new-contact button:hover{
+    background-color: #fff;
+    color: #000000;
+    animation-name: spin;
+    animation-duration: 500ms;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.chats{
+    border-bottom:solid 1px #dbd0de;
+}
+
+/* contacts */
+
+
+
+
+
+
+
+
+/* chat */
+.chat{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+}
+.chat-header,
+.chat-area {
+    flex: 0 1 auto;
+}
+.chat {
+    flex: 1 1 auto;
+    background-color: #fff;
+}
+
+.chat-header{
+    height: 50px;
+    background-color: #a589ffc4;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.search{
+    font-size: 18px;
+    color: #fff;
+}
+.chat-name{
+    font-family: 'Lato';
+    font-style: normal;
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+}
+.chat-name p{
+    margin: 0;
+}
+
+
+
+.chat-body{
+    padding: 20px;
+    overflow: auto;
+    margin-top: auto;
+}
+.chat-body::-webkit-scrollbar {
+    width: 7px;
+}
+.chat-body::-webkit-scrollbar-thumb {
+    background: #cccccc;
+    border-radius: 7px;
+}
+
+.core{
+    font-family: 'Lato';
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 400;
+}
+.core p{
+    margin: 0;
+}
+.mess{
+    padding: 5px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    max-width: 60%;
+}
+.my-message{
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.my-message .mess{
+    margin-left: auto;
+    background-color: #a8aaff42;
+}
+.interlocutor-message{
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.interlocutor-message .mess{
+    background-color: #d3a8ff36;
+}
+.mess small{
+    text-align: center;
+    color: #8D8D8D;
+    font-size: 12px;
+    margin: 0;
+    margin-left: 10px;
+}
+
+
+
+.round{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%; /* Радиус скругления */
+    box-shadow: 0 0 3px #666;
+    margin-right: 10px;
+}
+
+.chat-area{
+    height: 130px;
+    padding: 10px;
+    border-top: solid 1px #c2c2c2;
+    justify-content: space-between;
+}
+.chat-area form{
+    display: flex;
+}
+.chat-area textarea{
+    width: 870px;
+    height: 100%;
+    border: none;
+    border-radius: 5px;
+    resize: none;
+    padding: 10px;
+    outline: none;
+}
+.send-button button{
+    width: 50px;
+    font-size: 40px;
+    font-weight: 200;
+    border: none;
+    background-color: #fff;
+    color: #b1b1b1;
+    transition: all 0.5s;
+}
+
+.send-button button:hover{
+    color: #868686;
+}
+
+/* chat */
+
+
+
+
+
+
+
+
+/* interlocutor */
+.interlocutor-photo img{
+    max-width: 250px;
+    min-width: 250px;
+    min-height: 300px;
+    max-height: 300px;
+    object-fit: cover;
+}
+.interlocutor-head{
+    display: flex;
+    align-items: center;
+}
+.interlocutor-info{
+    padding: 15px 21px 15px 21px;
+}
+.interlocutor-name{
+    font-family: 'Lato';
+    font-style: normal;
+    font-size: 20px;
+    font-weight: 700;
+}
+.interlocutor-name p{
+    margin: 0;
+    margin-right: 10px;
+}
+.online .fa-circle{
+    color: #70CC16;
+    font-size: 9px;
+}
+.offline .fa-circle{
+    color: #ff0000;
+    font-size: 9px;
+}
+
+
+.text-status{
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #5F6164
+}
+.text-status p{
+    margin: 0;
+}
+
+
+.links{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+.link{
+    font-size: 20px;
+    background-color: #fff;
+    border-radius: 50px;
+    padding: 5px 10px;
+}
+.link a{
+    color: #717171;
+    transition: all 0.5s;
+}
+.facebook a:hover{
+    color: #2374e1;
+}
+.twitter a:hover{
+    color: #1d9bf0;
+}
+.instagram a:hover{
+    color: #ca3996;
+}
+.linkedin a:hover{
+    color:#0077b5;
+}
+
+
+.block-button{
+    margin-top: 10px;
+}
+.unblock-button{
+    margin-top: 10px;
+}
+.block-button button{
+    min-width: 100%;
+    padding: 5px 10px;
+    border:none;
+    border-radius: 5px;
+    background-color: #ea0000;
+    color: #fff;
+    font-weight: 600;
+    transition: background-color 0.5s;
+}
+.block-button button:hover{
+    background-color: #ba0000;
+}
+.unblock-button button{
+    min-width: 100%;
+    padding: 5px 10px;
+    border:none;
+    border-radius: 5px;
+    background-color: #3577EF;
+    color: #fff;
+    font-weight: 600;
+    transition: background-color 0.5s;
+}
+.unblock-button button:hover{
+    background-color: #2659b6;
+}
+
+
+
+
+.another-info{
+    margin-top: 10px;
+}
+.another-info p{
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    margin:0;
+}
+.element-name p{
+    font-size: 14px;
+    color: #5F6164;
+}
+.element-text p{
+    color: #000000;
+    margin-bottom: 5px;
+}
+
+/* interlocutor */
+
